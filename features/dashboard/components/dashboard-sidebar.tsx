@@ -45,7 +45,7 @@ interface NavSectionProps {
 }
 function NavSection({ label, items, pathname }: NavSectionProps) {
   return (
-    <SidebarGroup>
+    <SidebarGroup className="flex flex-1">
       {label && (
         <SidebarGroupLabel className="text-lg uppercase text-muted-foreground">
           {label}
@@ -65,7 +65,7 @@ function NavSection({ label, items, pathname }: NavSectionProps) {
                     : false
                 }
                 onClick={item.onClick}
-                className="h-9 px-3 py-2 text-xs tracking-tight font-medium border border-transparent data-[active=true]:border-border data-[active=true]:shadow-[0px_1px_1px_0px_rgba(44,54,53,0.03),inset_0px_0px_0px_2px_white]"
+                className="h-9 px-3 py-2 text-xs tracking-tight font-medium border border-transparent data-[active=true]:border-border data-[active=true]:shadow-[0px_1px_1px_0px_rgba(44,54,53,0.03),inset_0px_0px_0px_2px_white]pnp"
               >
                 {item.url ? (
                   <Link href={item.url}>

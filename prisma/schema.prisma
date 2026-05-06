@@ -67,7 +67,7 @@ model Generation {
   temperature       Float
   topP              Float
   topK              Int
-  repititionPenalty Float
+  repetitionPenalty Float
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

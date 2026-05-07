@@ -31,7 +31,7 @@ CREATE TABLE "Generation" (
     "temperature" DOUBLE PRECISION NOT NULL,
     "topP" DOUBLE PRECISION NOT NULL,
     "topK" INTEGER NOT NULL,
-    "repititionPenalty" DOUBLE PRECISION NOT NULL,
+    "repetitionPenalty" DOUBLE PRECISION NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

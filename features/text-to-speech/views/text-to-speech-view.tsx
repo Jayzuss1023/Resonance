@@ -9,6 +9,8 @@ import {
 } from "../components/text-to-speech-form";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { TTSVoicesProvider } from "../contexts/tts-voice-context";
+import { VoicePreviewPlaceholder } from "../components/voice-preview-placeholder";
+import { SettingsPanel } from "../components/settings-panel";
 
 export function TextToSpeechView({
   initialValues,
@@ -37,10 +39,12 @@ export function TextToSpeechView({
   return (
     <TTSVoicesProvider value={{ customVoices, systemVoices, allVoices }}>
       <TextToSpeechForm defaultValues={defaultValues}>
-        <div>
-          <div>
+        <div className="flex min-h-0 flex-1 overflow-hidden">
+          <div className="flex min-h-0 flex-1 flex-col">
             <TextInputPanel />
+            <VoicePreviewPlaceholder />
           </div>
+          <SettingsPanel />
         </div>
       </TextToSpeechForm>
     </TTSVoicesProvider>

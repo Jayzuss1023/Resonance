@@ -35,7 +35,7 @@ export function HydrateClient(props: { children: React.ReactNode }) {
   );
 }
 
-export function prefretch<T extends ReturnType<TRPCQueryOptions<any>>>(
+export function prefetch<T extends ReturnType<TRPCQueryOptions<any>>>(
   queryOptions: T,
 ) {
   const queryClient = getQueryClient();

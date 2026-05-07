@@ -27,6 +27,19 @@ export const generationsRouter = createTRPCRouter({
       };
     }),
 
+  getAll: orgProcedure.query(async ({ ctx }) => {
+    const generations = await prisma.generation.findMany({
+      where: { orgId: ctx.orgId },
+      orderBy: { createdAt: "desc" },
+      omit: {
+        orgId: true,
+        r2ObjectKey: true,
+      },
+    });
+
+    return generations;
+  }),
+
   create: orgProcedure
     .input(
       z.object({

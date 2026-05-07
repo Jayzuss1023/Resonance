@@ -19,7 +19,7 @@ export function TextInputPanel() {
     const trimmed = text.trim();
     if (!trimmed) return;
 
-    router.push(`/text-to-speech$text=${encodeURIComponent(trimmed)}`);
+    router.push(`/text-to-speech?text=${encodeURIComponent(trimmed)}`);
   };
   return (
     <div className="rounded-[22px] bg-linear-185 from-[#ff8eee3] from-15% via-[#57d7e0] via-39% to-[#dbf1f2] to-85% p-2 shadow-[0_0_0_4px_white]">
@@ -63,6 +63,7 @@ export function TextInputPanel() {
             size="sm"
             disabled={!text.trim()}
             className="w-full lg:w-auto"
+            onClick={handleGenerate}
           >
             Generate speech
           </Button>

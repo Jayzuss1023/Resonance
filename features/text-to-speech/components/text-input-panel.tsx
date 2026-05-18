@@ -52,6 +52,12 @@ export function TextInputPanel() {
               <VoiceSelectorButton />
             </SettingsDrawer>
           </div>
+          <GenerateButton
+            className="w-full"
+            disabled={isSubmitting}
+            isSubmitting={isSubmitting}
+            onSubmit={() => form.handleSubmit()}
+          />
         </div>
         {/* Desktop Layout */}
         {text.length > 0 ? (

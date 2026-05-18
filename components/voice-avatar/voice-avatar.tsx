@@ -7,7 +7,7 @@ import { useVoiceAvatar } from "./use-voice-avarar";
 interface VoiceAvatarProps {
   seed: string;
   name: string;
-  className: string;
+  className?: string;
 }
 
 export function VoiceAvatar({ seed, name, className }: VoiceAvatarProps) {

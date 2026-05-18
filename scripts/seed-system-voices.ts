@@ -158,7 +158,7 @@ const systemVoiceMetadata: Record<string, VoiceMetadata> = {
 async function readSystemVoiceAudio(name: string) {
   const filepath = path.join(SYSTEM_VOICES_DIR, `${name}.pt`);
   const buffer = Buffer.from(await fs.readFile(filepath));
-  return { buffer, contentType: "audio/wav" };
+  return { buffer, contentType: "application/octet-stream" };
 }
 
 async function uploadSystemVoiceAudio({

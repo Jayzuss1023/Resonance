@@ -1,9 +1,12 @@
 import { z } from "zod";
-import { createTRPCRouter, orgProcedure } from "../init";
-import { prisma } from "@/lib/db";
+
+import { env } from "@/lib/env";
 import { TRPCError } from "@trpc/server";
+import { chatterbox } from "@/lib/chatterbox-client";
+import { prisma } from "@/lib/db";
+import { uploadAudio } from "@/lib/r2";
 import { TEXT_MAX_LENGTH } from "@/features/text-to-speech/data/constants";
-import { invalidateRouteCacheEntries } from "next/dist/client/components/segment-cache/cache";
+import { createTRPCRouter, orgProcedure } from "../init";
 
 export const generationsRouter = createTRPCRouter({
   getById: orgProcedure
@@ -23,7 +26,7 @@ export const generationsRouter = createTRPCRouter({
 
       return {
         ...generation,
-        audioUrl: `/api/audo/${generation.id}`,
+        audioUrl: `/api/audio/${generation.id}`,
       };
     }),
 
@@ -53,9 +56,6 @@ export const generationsRouter = createTRPCRouter({
     )
     .mutation(async ({ input, ctx }) => {
       // Check for active subscription before generation
-      try {
-        // const customerState
-      } catch (error) {}
 
       const voice = await prisma.voice.findUnique({
         where: {
@@ -83,6 +83,35 @@ export const generationsRouter = createTRPCRouter({
         });
       }
 
+      const { data, error } = await chatterbox.POST("/generate", {
+        body: {
+          prompt: input.text,
+          voice_key: voice.r2ObjectKey,
+          temperature: input.temperature,
+          top_p: input.topP,
+          top_k: input.topK,
+          repetition_penalty: input.repetitionPenalty,
+          norm_loudness: true,
+        },
+        parseAs: "arrayBuffer",
+      });
+
+      if (error) {
+        console.log(error);
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Failed to generate audio",
+        });
+      }
+
+      if (!(data instanceof ArrayBuffer)) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Invalid audio response",
+        });
+      }
+
+      const buffer = Buffer.from(data);
       let generationId: string | null = null;
       let r2ObjectKey: string | null = null;
 
@@ -105,6 +134,8 @@ export const generationsRouter = createTRPCRouter({
 
         generationId = generation.id;
         r2ObjectKey = `generations/orgs/${ctx.orgId}/${generation.id}`;
+
+        await uploadAudio({ buffer, key: r2ObjectKey });
 
         await prisma.generation.update({
           where: {
@@ -137,6 +168,7 @@ export const generationsRouter = createTRPCRouter({
           message: "Failed to store generated audio",
         });
       }
+
       return {
         id: generationId,
       };

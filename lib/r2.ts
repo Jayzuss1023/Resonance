@@ -51,5 +51,5 @@ export async function getSignedAudioUrl(key: string): Promise<string> {
     Bucket: env.R2_BUCKET_NAME,
     Key: key,
   });
-  return getSignedUrl(r2, command, { expiresIn: 3600 });
+  return getSignedUrl(r2, command, { expiresIn: 3600 }); // 1 hour
 }

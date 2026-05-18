@@ -13,7 +13,7 @@ export default clerkMiddleware(async (auth, req) => {
     return NextResponse.next();
   }
 
-  // Protect non public routes
+  // Protect non-public routes
   if (!userId) {
     await auth.protect();
   }
@@ -31,6 +31,7 @@ export default clerkMiddleware(async (auth, req) => {
 
   return NextResponse.next();
 });
+
 export const config = {
   matcher: [
     // Skip Next.js internals and all static files, unless found in search params

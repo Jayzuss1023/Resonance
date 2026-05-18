@@ -11,6 +11,7 @@ import {
 } from "../components/text-to-speech-form";
 import { TTSVoicesProvider } from "../contexts/tts-voice-context";
 import { VoicePreviewPanel } from "../components/voice-preview-panel";
+import { VoicePreviewMobile } from "../components/voice-preview-mobile";
 
 export function TTSIdView({ id }: { id: string }) {
   const trpc = useTRPC();
@@ -54,6 +55,11 @@ export function TTSIdView({ id }: { id: string }) {
         <div className="flex min-h-0 flex-1 overflow-hidden">
           <div className="flex min-h-0 flex-1 flex-col">
             <TextInputPanel />
+            <VoicePreviewMobile
+              audioUrl={generationData.audioUrl}
+              voice={generationVoice}
+              text={generationData.text}
+            />
             <VoicePreviewPanel
               audioUrl={generationData.audioUrl}
               voice={generationVoice}

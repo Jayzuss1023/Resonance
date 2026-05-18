@@ -27,7 +27,7 @@ export function useWaveSurfer({
   autoplay,
   onReady,
   onError,
-}: UseWaveSurferOptions) {
+}: UseWaveSurferOptions): UseWaveSurferReturn {
   const containerRef = useRef<HTMLDivElement>(null);
   const wavesurferRef = useRef<WaveSurfer | null>(null);
   const isMobile = useIsMobile();

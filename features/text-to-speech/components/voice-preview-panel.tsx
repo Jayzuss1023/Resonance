@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Pause, Play, Download, Redo, Undo } from "lucide-react";
 import { format } from "date-fns";
 
@@ -33,6 +33,8 @@ export function VoicePreviewPanel({
   const [isDownloading, setIsDownloading] = useState(false);
   const selectedVoiceName = voice?.name ?? null;
   const selectedVoiceSeed = voice?.id ?? null;
+
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const {
     containerRef,

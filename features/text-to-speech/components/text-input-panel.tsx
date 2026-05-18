@@ -15,6 +15,8 @@ import { useTypedAppFormContext } from "@/hooks/use-app-form";
 import { TTSFormOptions } from "./text-to-speech-form";
 import { GenerateButton } from "./generate-button";
 import { PromptSuggestions } from "./prompt-suggestions";
+import { VoiceSelectorButton } from "./voice-selector-button";
+import { SettingsDrawer } from "./settings-drawer";
 
 export function TextInputPanel() {
   const form = useTypedAppFormContext(TTSFormOptions);
@@ -43,6 +45,14 @@ export function TextInputPanel() {
 
       {/* Action Bar */}
       <div className="shrink-0 p-4 lg:p-6">
+        {/* Mobile Layout */}
+        <div className="flex flex-col gap-3 lg:hidden">
+          <div className="flex items-center gap-2">
+            <SettingsDrawer>
+              <VoiceSelectorButton />
+            </SettingsDrawer>
+          </div>
+        </div>
         {/* Desktop Layout */}
         {text.length > 0 ? (
           <div className="hidden lg:flex items-center justify-between">

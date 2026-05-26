@@ -7,7 +7,6 @@ export async function GET(
   req: NextApiRequest,
   { params }: { params: Promise<{ generationId: string }> },
 ) {
-  console.log("FETCHING");
   const { userId, orgId } = await auth();
 
   if (!userId || !orgId) {
@@ -19,8 +18,6 @@ export async function GET(
   const generation = await prisma.generation.findUnique({
     where: { id: generationId, orgId },
   });
-
-  console.log("GENERATION LOCATED", generation);
 
   if (!generation) {
     return new Response("Not found", { status: 404 });

@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   devIndicators: false,
+  experimental: {
+    proxyClientMaxBodySize: "20mb",
+  },
 };
 
 export default withSentryConfig(nextConfig, {

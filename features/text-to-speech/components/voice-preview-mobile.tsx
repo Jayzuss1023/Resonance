@@ -61,9 +61,12 @@ export function VoicePreviewMobile({
     if (!audio) return;
 
     if (isPlaying) {
-      audioRef.current?.pause();
+      audio.pause();
     } else {
-      audioRef.current?.play();
+      void audio.play().catch((error) => {
+        console.log(error);
+        setIsPlaying(false);
+      });
     }
   };
 

@@ -60,6 +60,7 @@ import {
 } from "@/features/voices/data/voice-categories";
 import { diffieHellman } from "crypto";
 import { create } from "domain";
+import { VoiceRecorder } from "./voice-recorder";
 
 // import { VoiceRecorder } from "./voice-recorder";
 
@@ -360,6 +361,11 @@ export function VoiceCreateForm({
                   </TabsContent>
                   <TabsContent value="record">
                     {/* VoiceRecorder File Inserted */}
+                    <VoiceRecorder
+                      file={field.state.value}
+                      onFileChange={field.handleChange}
+                      isInvalid={isInvalid}
+                    />
                   </TabsContent>
                 </Tabs>
 

@@ -1,9 +1,8 @@
 import { Headphones, ThumbsUp } from "lucide-react";
 import Link from "next/link";
-
+import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { SidebarTrigger } from "./ui/sidebar";
-import { cn } from "@/lib/utils";
 
 interface PageHeaderProps {
   title: string;

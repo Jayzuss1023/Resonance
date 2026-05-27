@@ -1,13 +1,13 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { Pause, Play, Download, Redo, Undo } from "lucide-react";
 import { format } from "date-fns";
+import { Download, Pause, Play, Redo, Undo } from "lucide-react";
+import { useRef, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
 import { Spinner } from "@/components/ui/spinner";
+import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
 import { cn } from "@/lib/utils";
 
 import { useWaveSurfer } from "../hooks/use-wavesurfer";

@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type RecordRTCType from "recordrtc";
 import WaveSurfer from "wavesurfer.js";
 import RecordPlugin from "wavesurfer.js/dist/plugins/record.esm.js";
@@ -85,8 +85,9 @@ export function useAudioRecorder() {
       });
       streamRef.current = stream;
 
-      const { default: RecordRTC, StereoAudioRecorder } =
-        await import("recordrtc");
+      const { default: RecordRTC, StereoAudioRecorder } = await import(
+        "recordrtc"
+      );
 
       const recorder = new RecordRTC(stream, {
         recorderType: StereoAudioRecorder,

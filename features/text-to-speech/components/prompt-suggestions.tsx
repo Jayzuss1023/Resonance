@@ -1,19 +1,16 @@
 "use client";
 
+import type { LucideIcon } from "lucide-react";
 import {
-  BookOpen,
-  Smile,
-  Mic,
-  Languages,
+  Brain,
   Clapperboard,
   Gamepad2,
+  Languages,
+  Mic,
   Podcast,
-  Brain,
+  Smile,
 } from "lucide-react";
-
 import { Badge } from "@/components/ui/badge";
-
-import type { LucideIcon } from "lucide-react";
 
 const PROMPT_SUGGESTIONS: {
   label: string;

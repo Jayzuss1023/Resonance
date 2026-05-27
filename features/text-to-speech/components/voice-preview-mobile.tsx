@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { Pause, Play, Download } from "lucide-react";
+import { Download, Pause, Play } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";

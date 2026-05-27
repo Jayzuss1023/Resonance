@@ -3,15 +3,15 @@
 import { useSuspenseQueries } from "@tanstack/react-query";
 
 import { useTRPC } from "@/trpc/client";
-import { TextInputPanel } from "../components/text-input-panel";
 import { SettingsPanel } from "../components/settings-panel";
+import { TextInputPanel } from "../components/text-input-panel";
 import {
   TextToSpeechForm,
   type TTSFormValues,
 } from "../components/text-to-speech-form";
-import { TTSVoicesProvider } from "../contexts/tts-voice-context";
-import { VoicePreviewPanel } from "../components/voice-preview-panel";
 import { VoicePreviewMobile } from "../components/voice-preview-mobile";
+import { VoicePreviewPanel } from "../components/voice-preview-panel";
+import { TTSVoicesProvider } from "../contexts/tts-voice-context";
 
 export function TTSIdView({ id }: { id: string }) {
   const trpc = useTRPC();

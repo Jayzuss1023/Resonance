@@ -1,4 +1,4 @@
-import { type VoiceCategory } from "@/app/generated/prisma/enums";
+import type { VoiceCategory } from "@/app/generated/prisma/enums";
 
 export const VOICE_CATEGORY_LABELS: Record<VoiceCategory, string> = {
   AUDIOBOOK: "Audiobook",

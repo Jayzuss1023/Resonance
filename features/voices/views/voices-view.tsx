@@ -1,11 +1,11 @@
 "use client";
 
-import { useTRPC } from "@/trpc/client";
-import { useQueryState } from "nuqs";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQueryState } from "nuqs";
+import { useTRPC } from "@/trpc/client";
 import { VoiceList } from "../components/voice-list";
-import { voicesSearchParams } from "../lib/params";
 import { VoicesToolBar } from "../components/voices-toolbar";
+import { voicesSearchParams } from "../lib/params";
 
 function VoicesContent() {
   const trpc = useTRPC();

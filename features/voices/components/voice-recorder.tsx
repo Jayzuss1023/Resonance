@@ -1,17 +1,17 @@
 import {
-  Mic,
-  Square,
-  RotateCcw,
-  X,
   FileAudio,
-  Play,
+  Mic,
   Pause,
+  Play,
+  RotateCcw,
+  Square,
+  X,
 } from "lucide-react";
-
-import { cn, formatFileSize } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useAudioPlayback } from "@/hooks/use-audio-playback";
+import { cn, formatFileSize } from "@/lib/utils";
 import { useAudioRecorder } from "../hooks/use-audio-record";
+
 //   import { useAudioRecorder } from "@/features/voices/hooks/use-audio-recorder";
 
 function formatTime(seconds: number) {

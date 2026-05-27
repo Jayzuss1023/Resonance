@@ -1,8 +1,19 @@
 "use client";
 
+import { OrganizationSwitcher, UserButton, useClerk } from "@clerk/nextjs";
+import {
+  AudioLines,
+  Headphones,
+  Home,
+  LayoutGrid,
+  type LucideIcon,
+  Settings,
+  Volume2,
+} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-
+import { useState } from "react";
 import {
   Sidebar,
   SidebarContent,
@@ -18,18 +29,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
-import { OrganizationSwitcher, UserButton, useClerk } from "@clerk/nextjs";
-import {
-  type LucideIcon,
-  Home,
-  LayoutGrid,
-  AudioLines,
-  Volume2,
-  Settings,
-  Headphones,
-} from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
+import { VoiceCreateDialog } from "@/features/voices/components/voice-create-dialog";
 
 interface MenuItem {
   title: string;
@@ -129,6 +129,10 @@ export function DashboardSidebar() {
   ];
   return (
     <>
+      <VoiceCreateDialog
+        open={voiceDialogOpen}
+        onOpenChange={setVoiceDialogOpen}
+      />
       <Sidebar collapsible="icon" className="w-72 b">
         <SidebarHeader className="flex flex-col gap-4 pt-4">
           <div className="flex flex-col items-center gap-2 pl-1 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:pl-0">

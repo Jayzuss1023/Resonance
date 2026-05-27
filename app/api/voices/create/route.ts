@@ -1,13 +1,12 @@
 import { auth } from "@clerk/nextjs/server";
 import { parseBuffer } from "music-metadata";
+
 import { z } from "zod";
-import { env } from "@/lib/env";
-import { prisma } from "@/lib/db";
-import { uploadAudio } from "@/lib/r2";
-import { VOICE_CATEGORIES } from "@/features/voices/data/voice-categories";
 import type { VoiceCategory } from "@/app/generated/prisma/enums";
-import PageLoader from "next/dist/client/page-loader";
-import { normalize } from "path";
+import { VOICE_CATEGORIES } from "@/features/voices/data/voice-categories";
+import { prisma } from "@/lib/db";
+
+import { uploadAudio } from "@/lib/r2";
 
 const createVoiceSchema = z.object({
   name: z.string().min(1, "Voice name is required"),

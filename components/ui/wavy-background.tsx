@@ -1,7 +1,7 @@
 "use client";
-import { cn } from "@/lib/utils";
 import React, { useEffect, useRef, useState } from "react";
 import { createNoise3D } from "simplex-noise";
+import { cn } from "@/lib/utils";
 
 export const WavyBackground = ({
   children,
@@ -55,7 +55,7 @@ export const WavyBackground = ({
     h = ctx.canvas.height = window.innerHeight;
     ctx.filter = `blur(${blur}px)`;
     nt = 0;
-    window.onresize = function () {
+    window.onresize = () => {
       w = ctx.canvas.width = window.innerWidth;
       h = ctx.canvas.height = window.innerHeight;
       ctx.filter = `blur(${blur}px)`;

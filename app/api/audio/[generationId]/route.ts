@@ -1,10 +1,10 @@
 import { auth } from "@clerk/nextjs/server";
+
 import { prisma } from "@/lib/db";
 import { getSignedAudioUrl } from "@/lib/r2";
-import { NextApiRequest } from "next";
 
 export async function GET(
-  req: NextApiRequest,
+  _request: Request,
   { params }: { params: Promise<{ generationId: string }> },
 ) {
   const { userId, orgId } = await auth();

@@ -1,5 +1,5 @@
 import { TTSIdView } from "@/features/text-to-speech/views/tts-id-view";
-import { HydrateClient, trpc, prefetch } from "@/trpc/server";
+import { HydrateClient, prefetch, trpc } from "@/trpc/server";
 
 export default async function TTSIDPage({
   params,

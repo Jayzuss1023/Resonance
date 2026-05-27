@@ -1,11 +1,11 @@
 "use client";
 
-import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
-import { useTRPC } from "@/trpc/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
 import { AudioLines, AudioWaveform, Clock } from "lucide-react";
 import Link from "next/link";
+import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
+import { useTRPC } from "@/trpc/client";
 
 export function SettingsPanelHistory() {
   const trpc = useTRPC();

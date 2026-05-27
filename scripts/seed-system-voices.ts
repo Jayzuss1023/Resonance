@@ -3,13 +3,13 @@ import "dotenv/config";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { z } from "zod";
-import { PrismaPg } from "@prisma/adapter-pg";
 import {
   PutObjectCommand,
-  S3Client,
   type PutObjectCommandInput,
+  S3Client,
 } from "@aws-sdk/client-s3";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { z } from "zod";
 
 import {
   PrismaClient,

@@ -1,22 +1,20 @@
 "use client";
 
-import { Coins } from "lucide-react";
 import { useStore } from "@tanstack/react-form";
-
+import { Coins } from "lucide-react";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
-
 import {
   COST_PER_UNIT,
   TEXT_MAX_LENGTH,
 } from "@/features/text-to-speech/data/constants";
-import { useState } from "react";
 import { useTypedAppFormContext } from "@/hooks/use-app-form";
-import { TTSFormOptions } from "./text-to-speech-form";
 import { GenerateButton } from "./generate-button";
 import { PromptSuggestions } from "./prompt-suggestions";
-import { VoiceSelectorButton } from "./voice-selector-button";
 import { SettingsDrawer } from "./settings-drawer";
+import { TTSFormOptions } from "./text-to-speech-form";
+import { VoiceSelectorButton } from "./voice-selector-button";
 
 export function TextInputPanel() {
   const form = useTypedAppFormContext(TTSFormOptions);

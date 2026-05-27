@@ -1,6 +1,6 @@
-import { useMemo } from "react";
-import { createAvatar } from "@dicebear/core";
 import { glass } from "@dicebear/collection";
+import { createAvatar } from "@dicebear/core";
+import { useMemo } from "react";
 
 export function useVoiceAvatar(seed: string) {
   return useMemo(() => {

@@ -4,11 +4,11 @@ import { useStore } from "@tanstack/react-form";
 
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Slider } from "@/components/ui/slider";
-import { useTypedAppFormContext } from "@/hooks/use-app-form";
+import { VoiceSelector } from "@/features/text-to-speech/components/voice-selector";
 
 import { sliders } from "@/features/text-to-speech/data/sliders";
+import { useTypedAppFormContext } from "@/hooks/use-app-form";
 import { TTSFormOptions } from "./text-to-speech-form";
-import { VoiceSelector } from "@/features/text-to-speech/components/voice-selector";
 
 export function SettingsPanelSettings() {
   const form = useTypedAppFormContext(TTSFormOptions);

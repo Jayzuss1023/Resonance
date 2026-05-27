@@ -1,7 +1,6 @@
 import { Settings } from "lucide-react";
-
+import type React from "react";
 import { Button } from "@/components/ui/button";
-
 import {
   Drawer,
   DrawerContent,
@@ -9,9 +8,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-
 import { SettingsPanelSettings } from "./settings-panel-settings";
-import React from "react";
 
 type SettingsDrawerProps = {
   open?: boolean;

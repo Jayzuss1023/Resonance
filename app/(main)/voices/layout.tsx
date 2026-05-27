@@ -1,5 +1,5 @@
+import type React from "react";
 import { PageHeader } from "@/components/page-header";
-import React from "react";
 
 export default function VoicesLayout({
   children,

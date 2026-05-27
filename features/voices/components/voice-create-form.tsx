@@ -1,51 +1,33 @@
 "use client";
 
-import React, { useState } from "react";
-import { string, z } from "zod";
-import { toast } from "sonner";
 import { useForm } from "@tanstack/react-form";
-import { useDropzone } from "react-dropzone";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { diffieHellman } from "crypto";
+import { create } from "domain";
+import locales from "locale-codes";
 import {
+  AlignLeft,
   AudioLines,
-  FolderOpen,
-  X,
-  FileAudio,
-  Upload,
-  Mic,
-  Tag,
-  Play,
-  Pause,
   Check,
   ChevronsUpDown,
+  FileAudio,
+  FolderOpen,
   Globe,
   Layers,
-  AlignLeft,
+  Mic,
+  Pause,
+  Play,
   RotateCcw,
+  Tag,
+  Upload,
+  X,
 } from "lucide-react";
-import locales from "locale-codes";
-
-import { cn, formatFileSize } from "@/lib/utils";
-import { useAudioPlayback } from "@/hooks/use-audio-playback";
-import { useTRPC } from "@/trpc/client";
-
+import type React from "react";
+import { useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { toast } from "sonner";
+import { string, z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Field, FieldError } from "@/components/ui/field";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import {
   Command,
   CommandEmpty,
@@ -54,12 +36,29 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { Field, FieldError } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
 import {
   VOICE_CATEGORIES,
   VOICE_CATEGORY_LABELS,
 } from "@/features/voices/data/voice-categories";
-import { diffieHellman } from "crypto";
-import { create } from "domain";
+import { useAudioPlayback } from "@/hooks/use-audio-playback";
+import { cn, formatFileSize } from "@/lib/utils";
+import { useTRPC } from "@/trpc/client";
 import { VoiceRecorder } from "./voice-recorder";
 
 // import { VoiceRecorder } from "./voice-recorder";
@@ -315,6 +314,11 @@ export function VoiceCreateForm({
           language: value.language,
           description: value.description || undefined,
         });
+        toast.success("Voice created successfully!");
+        queryClient.invalidateQueries({
+          queryKey: trpc.voices.getAll.queryKey(),
+        });
+        form.reset();
       } catch (error) {}
     },
   });

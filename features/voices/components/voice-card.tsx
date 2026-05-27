@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
-import { VOICE_CATEGORY_LABELS } from "@/features/text-to-speech/data/voice-categories";
-import { AppRouter } from "@/trpc/routers/_app";
-import { inferRouterOutputs } from "@trpc/server";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import type { inferRouterOutputs } from "@trpc/server";
 import { Mic, MoreHorizontal, Pause, Play, Trash2 } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { toast } from "sonner";
 
 import {
   AlertDialog,
@@ -15,19 +15,19 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import Link from "next/link";
-import { useState } from "react";
-import { useAudioPlayback } from "@/hooks/use-audio-playback";
 import { Spinner } from "@/components/ui/spinner";
+import { VoiceAvatar } from "@/components/voice-avatar/voice-avatar";
+import { VOICE_CATEGORY_LABELS } from "@/features/text-to-speech/data/voice-categories";
+import { useAudioPlayback } from "@/hooks/use-audio-playback";
 import { useTRPC } from "@/trpc/client";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { toast } from "sonner";
+import type { AppRouter } from "@/trpc/routers/_app";
 
 export type VoiceItem =
   inferRouterOutputs<AppRouter>["voices"]["getAll"]["custom"][number];

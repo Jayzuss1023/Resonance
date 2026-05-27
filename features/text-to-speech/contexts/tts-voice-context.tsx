@@ -1,7 +1,8 @@
 "use client";
 
-import React, { createContext, useContext } from "react";
 import type { inferRouterOutputs } from "@trpc/server";
+import type React from "react";
+import { createContext, useContext } from "react";
 
 import type { AppRouter } from "@/trpc/routers/_app";
 

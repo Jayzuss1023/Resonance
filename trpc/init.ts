@@ -1,5 +1,5 @@
-import * as Sentry from "@sentry/node";
 import { auth } from "@clerk/nextjs/server";
+import * as Sentry from "@sentry/node";
 import { initTRPC, TRPCError } from "@trpc/server";
 import { cache } from "react";
 import superjson from "superjson";

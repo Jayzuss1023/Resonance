@@ -44,7 +44,10 @@ export function useAudioPlayback(src: string | File | null) {
           setIsPlaying(true);
           setIsLoading(false);
         })
-        .catch((error) => {});
+        .catch(() => {
+          setIsPlaying(false);
+          setIsLoading(false);
+        });
     }
   }, [src, isPlaying]);
 

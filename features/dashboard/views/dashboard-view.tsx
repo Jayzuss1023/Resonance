@@ -7,7 +7,7 @@ import { TextInputPanel } from "../components/text-inut-panel";
 export function DashboardView() {
   return (
     <div className="relative">
-      <PageHeader title="Dashboard" className="lg:hidden" />
+      <PageHeader title="Dashboard" />
       <HeroPattern />
       <div className="relative space-y-8 p-4 lg:p-16">
         <DashboardHeader />

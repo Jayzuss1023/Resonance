@@ -42,11 +42,13 @@ export async function GET(
     return new Response("Failed to fetch voice audio", { status: 502 });
   }
 
-  const contentType = audioResponse.headers.get("content-type") || "audio/wav";
+  const rawType = audioResponse.headers.get("content-type") || "audio/wav";
+  const contentType = rawType.includes("octet-stream") ? "audio/wav" : rawType;
 
   return new Response(audioResponse.body, {
     headers: {
       "Content-Type": contentType,
+      "Accept-Ranges": "bytes",
       "Cache-Control":
         voice.variant === "SYSTEM"
           ? "public, max-age=86400"

@@ -20,7 +20,7 @@ import { CANONICAL_SYSTEM_VOICE_NAMES } from "../features/voices/data/voice-scop
 
 const SYSTEM_VOICES_DIR = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
-  "chatterbox-tts-voices/voice_conds",
+  "chatterbox-tts-voices/prompts",
 );
 
 const envSchema = z.object({
@@ -156,9 +156,9 @@ const systemVoiceMetadata: Record<string, VoiceMetadata> = {
 };
 
 async function readSystemVoiceAudio(name: string) {
-  const filepath = path.join(SYSTEM_VOICES_DIR, `${name}.pt`);
+  const filepath = path.join(SYSTEM_VOICES_DIR, `${name}.wav`);
   const buffer = Buffer.from(await fs.readFile(filepath));
-  return { buffer, contentType: "application/octet-stream" };
+  return { buffer, contentType: "audio/wav" };
 }
 
 async function uploadSystemVoiceAudio({

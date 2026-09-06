@@ -11,8 +11,8 @@
 !.yarn/versions
 
 # Agent
-/.agents/skills
-/.claude/skills
+.agents/
+.claude/
 
 # testing
 /coverage
